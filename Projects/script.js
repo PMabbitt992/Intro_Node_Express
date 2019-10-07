@@ -1,20 +1,19 @@
+var express = require('express');
+var app = express();
 var fs = require('fs');
-var input = document.getElementById('input').value;
+var port = 8080;
+var fetch = require("node-fetch");
 
+app.use(express.static(__dirname));
 
-const imgNum = (url, cb) => {
-    fetch(url)
-        .then(res => res.json())
-        .then(data => cb(data))
-}
-
-imgNum('https: //http.cat/[' + input + ']', data => {
-    console.log(data)
+app.listen(port, function () {
+    console.log('Server listening on localhost:%s', port);
 });
 
-fs.writeFile('http://localhost:8080/' + input, data, function (err) {
-    document.getElementById('img').textContent = data;
-    if (err) {
-        console.log(err);
-    }
-});
+
+//var input = document.getElementById('input').value;
+//console.log(input);
+
+fetch('https://pokeapi.co/api/v2/pokemon/sylveon')
+    .then(response => response.json())
+    .then(data => console.log(data))
