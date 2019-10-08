@@ -1,6 +1,5 @@
 var express = require('express');
 var app = express();
-var fs = require('fs');
 var port = 8080;
 var fetch = require("node-fetch");
 
@@ -11,9 +10,20 @@ app.listen(port, function () {
 });
 
 
-//var input = document.getElementById('input').value;
-//console.log(input);
+app.get('/subnautica', function (req, res) {
+    fetch("https://chicken-coop.p.rapidapi.com/games/subnautica?platform=pc", (data) => {
+        var html = 'link rel="stylesheet" href="styles.css"';
+        html += `p${data}`;
+    })
+    res.send(html);
+});
 
-fetch('https://pokeapi.co/api/v2/pokemon/sylveon')
-    .then(response => response.json())
-    .then(data => console.log(data))
+
+
+
+
+//Template Engine
+app.set('view engine', 'pug');
+app.get('/', function (req, res) {
+    res.render('index')
+})
