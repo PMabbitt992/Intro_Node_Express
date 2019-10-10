@@ -6,4 +6,7 @@ head
 section
   h1 Type the name of a PC game to get information
   input#input(type='text' value='')
-script(src='script.js')
+  p=data.result.title
+  p=data.result.publisher
+  p=data.result.alsoAvailableOn
+script(src='client.js')

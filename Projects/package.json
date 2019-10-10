@@ -11,6 +11,8 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
-    "pug": "^2.0.4"
+    "pug": "^2.0.4",
+    "requirejs": "^2.3.6",
+    "unirest": "^0.6.0"
   }
 }
