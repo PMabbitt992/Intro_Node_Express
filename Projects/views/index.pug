@@ -4,9 +4,19 @@ head
   link(rel='stylesheet' href='style.css')
   title PC Video Game Information
 section
-  h1 Type the name of a PC game to get information
-  input#input(type='text' value='')
+  h1 Click the name of a PC game to get information
+  br
+  input(type='button', href='http://localhost:8080/ARK', value='ARK')
+  input(type='button', href='http://localhost:8080/Minecraft', value='Minecraft')
+  input(type='button', href='http://localhost:8080/Subnautica', value='Subnautica')
+  input(type='button', href='http://localhost:8080/Starbound', value='Starbound')
+  input(type='button', href='http://localhost:8080/UGG', value='Untitled Goose Game')
+
   p=data.result.title
   p=data.result.publisher
+  p=data.result.releaseDate
+  p=data.result.description
+  p=data.result.genre
   p=data.result.alsoAvailableOn
-script(src='client.js')
+
+script(src='server.js')

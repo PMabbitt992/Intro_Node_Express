@@ -16,8 +16,9 @@ app.set('view engine', 'pug');
 
 
 //Unirest Request\\
-var game = "minecraft"
+var game = "starbound"; //Will eventually be set to equal the value of the button clicked
 var req = unirest("GET", 'https://chicken-coop.p.rapidapi.com/games/' + game + '');
+
 
 req.query({
     "platform": "pc"
@@ -35,7 +36,27 @@ req.end(function (res) {
     app.get('/', function (req, res) {
         res.render('index', {
             data: info,
+            img: info.result.image,
         })
     });
+    console.log(info);
+});
 
+
+//Endpoint Content\\
+app.get('/' + game + '', (req, res) => {
+    var html = 'input(type="button", href="http://localhost:8080/ARK", value="ARK")'
+    html += 'input(type="button", href="http://localhost:8080/Minecraft", value="Minecraft")'
+    html += 'input(type="button", href="http://localhost:8080/Subnautica", value="Subnautica")'
+    html += 'input(type="button", href="http://localhost:8080/Starbound", value="Starbound")'
+    html += 'input(type="button", href="http://localhost:8080/UGG", value="Untitled Goose Game")'
+    html += `img(src = ${info.result.image}, alt = '${game} Logo')`;
+    html += `p=${info.result.title}`;
+    html += `p=${info.result.publisher}`;
+    html += `p=${info.result.releaseDate}`;
+    html += `p=${info.result.description}`;
+    html += `p=${info.result.genre}`;
+    html += `p=${info.result.alsoAvailableOn}`;
+    console.log(html);
+    res.send(html);
 });
