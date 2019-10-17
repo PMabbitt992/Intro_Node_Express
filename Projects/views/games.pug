@@ -7,7 +7,7 @@ head
   h1 Click the name of a PC game to get information
   br  
   each val in pages
-      a.btn.btn-primary.btn-lg.active(href=val role='button' aria-pressed='true') 
+      a.btn.btn-info.btn-lg.active(href=val role='button' aria-pressed='true') 
         =val
 section
   h1=title
@@ -16,11 +16,13 @@ section
   p=release
   p=desc
   ul
+    //- put each valuable in genre into a list
     each val in genres
       li= val
-  p=also
+  ul  
+    each val in also
+      li=also
 
-  
 
 
 script(src='client.js')

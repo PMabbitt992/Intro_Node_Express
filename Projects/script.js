@@ -7,8 +7,6 @@
  */
 
 
-
-
 /** BASIC EXPRESS SETUP
  * server.js
  * 1. Require Express
@@ -34,38 +32,6 @@ app.use(express.static("public"));
 let listener = app.listen(PORT || process.env.PORT);
 LOG('running on port ' + listener.address().port);
 
-/** COMPRESSION
- * 1. Provides gzip compression for the HTTP response
- * 2. Enable gzip compression for all HTTP responses
- */
-//var compression = require('compression');
-//app.use(compression());
-
-
-// app.use('/hello', (req, res, next) => res.send('Hello World') )
-
-
-/**
- * http://expressjs.com/en/starter/basic-routing.html
- * @example
- */
-// const aboutFile = __dirname + "/views/index.hbs";
-
-// const indexFile = __dirname + "/views/index.hbs";
-// app
-//     .get("/home", (req, res) => res.sendFile(indexFile) )
-//     .get("/about", (req, res) => res.sendFile(aboutFile) )
-
-
-
-
-/**
-* You can also refactor your routes like this later
-* @example  
-  const routes = require("./routes");
-  app.use("/api", routes);
-*/
-
 
 /**
  * asynchronous fetch json from an API and pass it into the view
@@ -86,8 +52,9 @@ const get_data = async (url, templateNameString, res) => {
         // const [...data] = json.data;
         console.log(json);
         // pass the json response into the the view
-        // remember that res.render is part of EXPRESS
+
         res.render(templateNameString, {
+            //put specific pieces of json data into variables for use in the pug
             data: json,
             title: json.result.title,
             img: json.result.image,
@@ -120,12 +87,8 @@ const get_data = async (url, templateNameString, res) => {
  * 3. Route for any undefined page will send a 404 error.
  * 4. Handle errors
  */
-// app.get("/", (request, response) => {
-//   response.render('index', {
-//     exampleVariable: "Hello world"
-//   });
-// });
 
+//Homepage render
 app.get("/", (req, res) => {
     // get_data("", "index", res)
     res.render("home", {
@@ -140,6 +103,10 @@ app.get("/", (req, res) => {
 });
 
 
+//for each endpoint, get the specified url data and display on the specified endpoint
+app.get("/Magicka", (req, res) => {
+    get_data("https://chicken-coop.p.rapidapi.com/games/Magicka", "games", res)
+});
 app.get("/Minecraft", (req, res) => {
     get_data("https://chicken-coop.p.rapidapi.com/games/Minecraft", "games", res)
 });
@@ -149,9 +116,7 @@ app.get("/Starbound", (req, res) => {
 app.get("/Subnautica", (req, res) => {
     get_data("https://chicken-coop.p.rapidapi.com/games/Subnautica", "games", res)
 });
-app.get("/Magicka", (req, res) => {
-    get_data("https://chicken-coop.p.rapidapi.com/games/Magicka", "games", res)
-});
+
 
 
 // app.use(function(req, res, next){
