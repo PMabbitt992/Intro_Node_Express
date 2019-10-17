@@ -1,0 +1,26 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  //- link(rel='stylesheet' href='style.css')
+  link(href='/bootstrap.css', rel='stylesheet')
+  title PC Video Game Information
+  h1 Click the name of a PC game to get information
+  br  
+  each val in pages
+      a.btn.btn-primary.btn-lg.active(href=val role='button' aria-pressed='true') 
+        =val
+section
+  h1=title
+  img(src=img)
+  p=publisher 
+  p=release
+  p=desc
+  ul
+    each val in genres
+      li= val
+  p=also
+
+  
+
+
+script(src='client.js')
