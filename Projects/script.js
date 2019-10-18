@@ -64,10 +64,22 @@ const get_data = async (url, templateNameString, res) => {
             publisher: json.result.publisher,
             also: json.result.alsoAvailableOn,
             pages: [
+                '/ARK',
+                '/Donut-County',
+                "/Don't-Starve",
+                '/Fez',
+                '/Magicka',
                 '/Minecraft',
+                '/Ori-and-the-Blind-Forest',
+                '/Slime-Rancher',
                 '/Starbound',
                 '/Subnautica',
-                '/Magicka'
+                '/Titan-Souls',
+                '/Terraria',
+                '/Tower-Unite',
+                '/Undertale',
+                '/Untitled-Goose-Game'
+
             ]
         });
         console.timeEnd("Request time");
@@ -94,27 +106,72 @@ app.get("/", (req, res) => {
     res.render("home", {
         title: "home",
         pages: [
+            '/ARK',
+            '/Donut-County',
+            "/Don't-Starve",
+            '/Fez',
+            '/Magicka',
             '/Minecraft',
+            '/Ori-and-the-Blind-Forest',
+            '/Slime-Rancher',
             '/Starbound',
             '/Subnautica',
-            '/Magicka'
+            '/Titan-Souls',
+            '/Terraria',
+            '/Tower-Unite',
+            '/Undertale',
+            '/Untitled-Goose-Game'
+
         ]
     });
 });
 
 
 //for each endpoint, get the specified url data and display on the specified endpoint
+app.get("/ARK", (req, res) => {
+    get_data("https://chicken-coop.p.rapidapi.com/games/ARK: Survival Evolved", "games", res)
+});
+app.get("/Donut-County", (req, res) => {
+    get_data("https://chicken-coop.p.rapidapi.com/games/Donut County", "games", res)
+});
+app.get("/Don't-Starve", (req, res) => {
+    get_data("https://chicken-coop.p.rapidapi.com/games/Don't Starve", "games", res)
+});
+app.get("/Fez", (req, res) => {
+    get_data("https://chicken-coop.p.rapidapi.com/games/Fez", "games", res)
+});
 app.get("/Magicka", (req, res) => {
     get_data("https://chicken-coop.p.rapidapi.com/games/Magicka", "games", res)
 });
 app.get("/Minecraft", (req, res) => {
     get_data("https://chicken-coop.p.rapidapi.com/games/Minecraft", "games", res)
 });
+app.get("/Ori-and-the-blind-forest", (req, res) => {
+    get_data("https://chicken-coop.p.rapidapi.com/games/Ori and the Blind Forest", "games", res)
+});
+app.get("/Slime-Rancher", (req, res) => {
+    get_data("https://chicken-coop.p.rapidapi.com/games/Slime Rancher", "games", res)
+});
 app.get("/Starbound", (req, res) => {
     get_data("https://chicken-coop.p.rapidapi.com/games/Starbound", "games", res)
 });
 app.get("/Subnautica", (req, res) => {
     get_data("https://chicken-coop.p.rapidapi.com/games/Subnautica", "games", res)
+});
+app.get("/Titan-Souls", (req, res) => {
+    get_data("https://chicken-coop.p.rapidapi.com/games/Titan Souls", "games", res)
+});
+app.get("/Terraria", (req, res) => {
+    get_data("https://chicken-coop.p.rapidapi.com/games/Terraria", "games", res)
+});
+app.get("/Tower-Unite", (req, res) => {
+    get_data("https://chicken-coop.p.rapidapi.com/games/Tower Unite", "games", res)
+});
+app.get("/Undertale", (req, res) => {
+    get_data("https://chicken-coop.p.rapidapi.com/games/Undertale", "games", res)
+});
+app.get("/Untitled-Goose-Game", (req, res) => {
+    get_data("https://chicken-coop.p.rapidapi.com/games/Untitled Goose Game", "games", res)
 });
 
 
