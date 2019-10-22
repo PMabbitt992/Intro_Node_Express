@@ -3,25 +3,27 @@ head
   meta(charset='UTF-8')
   //- link(rel='stylesheet' href='style.css')
   link(href='/bootstrap.css', rel='stylesheet')
+body
   title PC Video Game Information
   h1 Click the name of a PC game to get information
   br  
   each val in pages
-      a.btn.btn-info.btn-lg.active(href=val role='button' aria-pressed='true') 
-        =val
-section
-  h1=title
-  img(src=img)
-  p=publisher 
-  p=release
-  p=desc
-  ul
-    //- put each valuable in genre into a list
-    each val in genres
-      li= val
-  ul  
-    each val in also
-      li=val
+    a.btn.btn-info.btn-lg.active(href=val role='button' aria-pressed='true')=val
+  section
+    h1=title
+    img(src=img)
+    p=publisher 
+    p=release
+    p=desc
+    h5 Genres
+    ul
+      //- put each valuable in genre into a list
+      each val in genres
+        li= val
+    h5 Other Platforms
+    ul  
+      each val in also
+        li=val
 
 
 
